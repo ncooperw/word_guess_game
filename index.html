@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Michael Jackson Word Guess</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    <script src="assets/javascript/game.js"></script>
+</head>
+
+<body>
+    <div class="Container">
+        <nav class="navbar navbar-light bg-light">
+
+            <img src="assets/images/michael-jackson-logo.jpg" class="align-top rounded mx-auto d-block" alt="Michael Jackson">
+            <h1>Word Guess game</h1>
+
+        </nav>
+    </div>
+    <div class="container border border-danger">
+        <div class="row">
+            <div class="col border-right border-danger">
+                <img src="assets/images/michaeljackson_background.png" class="img-fluid img-thumbnail rounded float-left" alt="main image">
+            </div>
+            <div class="col">
+                <p>Press any ket to get started!</p>
+                <div id="game">
+                    <!--Wins-->
+                    <!-- Current Word-->
+                    <p>Current Word</p>
+                    <p id="currentGuess"></p>
+                    <!--Number of Guesses Remaining-->
+                    <!--Letters already guessed-->
+                    <p id="guessLetter"></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Psuedo Code
+    Header with name of game
+    2 columns
+    1. picture 
+    2. Press any key to get started
+    wins
+    current word
+    _ _ _ for each letter of the word
+    Number of guesses remaining
+    Letters already guessed
+
+    As user presses a key, if letter is pressed 
+        correct letter - fills in the blank
+        Incorrect letter - adds to letters guessed and reduces number of guesses
+        if letter is pressed again, number of guesses does not go down
+
+    win
+    column 1 picture changes
+    song is played
+    
+    songs to guess
+    
+    Thriller
+
+    Man in the Mirror
+
+    Beat It
+
+    Black or White
+
+    Billie Jean
+
+    -->
+
+</body>
+
+</html>
