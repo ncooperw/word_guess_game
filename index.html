@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
-    <script src="assets/javascript/game.js"></script>
+    <script src="assets/javascript/game2.js"></script>
 </head>
 
 <body>
@@ -28,15 +28,21 @@
                 <img src="assets/images/michaeljackson_background.png" class="img-fluid img-thumbnail rounded float-left" alt="main image">
             </div>
             <div class="col">
-                <p>Press any ket to get started!</p>
+                <p>Press button to get started!</p>
+                <!-- button to start game -->
+      <button onclick="resetGame()" id="random-button" class="btn btn-danger"><h1>Click Me</h1></button>
                 <div id="game">
                     <!--Wins-->
+                    <p id="wins"></p>
                     <!-- Current Word-->
                     <p>Current Word</p>
-                    <p id="currentGuess"></p>
+                    <p id="current-word"></p>
                     <!--Number of Guesses Remaining-->
+                    <p>Remaing Guesses</p>
+                    <p id="remainingGuesses"></p>
                     <!--Letters already guessed-->
-                    <p id="guessLetter"></p>
+                   <p> Letters that you have guessed</p>
+                    <p id="guessedLetters"></p>
                 </div>
             </div>
         </div>
