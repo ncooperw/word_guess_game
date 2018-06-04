@@ -25,7 +25,7 @@
     <div class="container border border-danger">
         <div class="row">
             <div class="col border-right border-danger">
-                <img src="assets/images/michaeljackson_background.png" class="img-fluid img-thumbnail rounded float-left" alt="main image">
+                <img id="winImg" src="assets/images/michaeljackson_background.png" class="img-fluid img-thumbnail rounded float-left" alt="main image">
             </div>
             <div class="col">
                 <p>Press button to get started!</p>
@@ -33,6 +33,7 @@
       <button onclick="resetGame()" id="random-button" class="btn btn-danger"><h1>Click Me</h1></button>
                 <div id="game">
                     <!--Wins-->
+                    <p>Wins: </p>
                     <p id="wins"></p>
                     <!-- Current Word-->
                     <p>Current Word</p>

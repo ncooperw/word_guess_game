@@ -1,5 +1,8 @@
 // Create Variables
-var words = ["thriller", "bad", "dangerous", "immortal", "history", "abc"];
+var words = [{"winWord":"thriller",
+"winImg": "assets/images/Thiller.png"
+ }]
+//   "bad", "dangerous", "immortal", "history", "abc"];
 
 const maxTries = 10; //maximum number of tries
 var currentWord; //word chosen at random
@@ -11,6 +14,7 @@ var gameStarted = false;
 var hasFinished = false;
 var remainingGuesses = 0;
 
+
 //Game setup
 
 //functions
@@ -18,17 +22,19 @@ function resetGame() {
     remainingGuesses = maxTries;
     gameStarted = false;
 
+    //remove image
+    // document.getElementById("winImg").src = "";
     //choose random word
     currentWord = words[Math.floor(Math.random() * words.length)];
 
-    console.log(currentWord);
+    console.log(currentWord.winWord);
 
     //define empty arrays
     guessedLetters = [];
     guessingWord = [];
 
     //Create blanks for each letter in the random word
-    for (var i = 0; i < currentWord.length; i++) {
+    for (var i = 0; i < currentWord.winWord.length; i++) {
         guessingWord.push("_");
     }
     console.log(guessingWord);
@@ -46,8 +52,10 @@ function resetGame() {
 function makeGuess(letter) {
     if (remainingGuesses > 0) {
         if (guessedLetters.indexOf(letter) === -1) {
-            guessedLetters.push(letter);
+            guessedLetters.push(letter); 
+            remainingGuesses --;
             evaluateGuess(letter);
+            console.log(remainingGuesses);
         }
     }
     updateDisplay();
@@ -57,32 +65,33 @@ function makeGuess(letter) {
 function evaluateGuess(letter) {
     //Array to store position of letters in string
 
-    var positions = [];
+    // var positions = [];
 
     //Loop through word finding all instances of guessed letter
 
-    for (var i = 0; i < currentWord.length; i++) {
-        if (currentWord[i] === letter) {
-            positions.push(i);
-        }
+    for (var i = 0; i < currentWord.winWord.length; i++) {
+        if (currentWord.winWord[i] === letter) {
+            guessingWord[i] = letter;
+        
+    }
     }
     //if letter is not in word, add letter to guessed letters
-    if (positions.length <= 0) {
-        remainingGuesses--;
-    } else {
-        //loop through and replace blanks with letter
-        for (var i = 0; i < positions.length; i++) {
-            guessingWord[positions[i]] = letter;
-        }
-    }
-    console.log(positions);
+    // if (positions.length <= 0) {
+    //     remainingGuesses--;
+    // } else {
+    //     //loop through and replace blanks with letter
+    //     for (var i = 0; i < positions.length; i++) {
+    //         guessingWord[positions[i]] = letter;
+    //     }
+    
+    // console.log(positions);
 };
 
 //Updates the display on the HTML Page
 function updateDisplay() {
     // document.getElementById("wins").innerText = wins;
     document.getElementById("current-word").innerText = "";
-    for (var i = 0; i < currentWord.length; i++) {
+    for (var i = 0; i < currentWord.winWord.length; i++) {
         document.getElementById("current-word").innerText += guessingWord[i];
     }
     document.getElementById("remainingGuesses").innerText = remainingGuesses;
@@ -91,10 +100,18 @@ function updateDisplay() {
 
 function checkWin () {
     if(guessingWord.indexOf("_") === -1) {
+        console.log(guessingWord);
+        console.log(currentWord.winWord);
+        
+        //compare the guessingWord with words.winWords array in an if statement then display the image of the word
+        
         alert("You Win!");
         win++;
+        document.getElementById("wins").innerText = win;
         hasFinished = true;
-    }
+        document.getElementById("winImg").src = words[0].winImg;
+        console.log("total wins =", + win);
+}
 };
 // function with key press
 document.onkeyup = function (event) {
@@ -102,12 +119,12 @@ document.onkeyup = function (event) {
     var letter = String.fromCharCode(event.keyCode).toLowerCase();
 
     if (event.keyCode >= 65 && event.keyCode <= 90) {
-        makeGuess();
+        makeGuess(letter);
 
         console.log("you pressed " + letter);
 
         //add letter to the empty array
-        guessedLetters.push(" " + letter);
-        console.log(guessedLetters);
+        // guessedLetters.push(letter);
+        // console.log(guessedLetters);
     }
 };
