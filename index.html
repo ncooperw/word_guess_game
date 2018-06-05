@@ -15,13 +15,18 @@
 
 <body>
     <div class="Container">
-        <nav class="navbar navbar-light bg-light">
+        <div class="card justify-content-center">
+            <img class="img-thumbnail"  src="assets/images/michael-jackson-logo2.jpg" alt="michael-jackson-logo">
+            <div class="card-header bg-dark text-center">
+                <h1 class="text-white">Word Guess Game</h1>
+            </div>
+        </div>
 
-            <img src="assets/images/michael-jackson-logo.jpg" class="align-top rounded mx-auto d-block" alt="Michael Jackson">
-            <h1>Word Guess game</h1>
-
-        </nav>
     </div>
+    <div class="container">
+        <p class="text-muted">Test your knowledge of The King of Pop's albums. All of the words are one of Michael Jackson's albums.</p>
+    </div>
+
     <div class="container border border-danger">
         <div class="row">
             <div class="col border-right border-danger">
@@ -30,8 +35,8 @@
             <div class="col">
                 <h1 class="danger">Press button to get started!</h1>
                 <!-- button to start game -->
-      <button type="button" onclick="resetGame()" id="random-button" class="btn btn-danger">Click Me</button>
-      
+                <button type="button" onclick="resetGame()" id="random-button" class="btn btn-danger">Click Me</button>
+
                 <div id="game">
                     <!--Wins-->
                     <p class="h2 m-1 mt-3 ">Wins: </p>
@@ -41,14 +46,14 @@
                     <!-- Current Word-->
                     <p class="h2">Current Word</p>
                     <br>
-                    <p class="h1 text-success"id="current-word"></p>
+                    <p class="h1 text-success" id="current-word"></p>
                     <!--Number of Guesses Remaining-->
                     <p class="h2">Remaining Guesses</p>
                     <p class="h3 text-warning" id="remainingGuesses"></p>
                     <!--Letters already guessed-->
-                   <p class="h3 text-muted"> Letters that you have guessed</p>
+                    <p class="h3 text-muted"> Letters that you have guessed</p>
                     <p class="h3 text-muted" id="guessedLetters"></p>
-                    
+
                 </div>
             </div>
         </div>

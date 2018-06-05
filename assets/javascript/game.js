@@ -26,7 +26,7 @@ var words = [{
     },
 ];
 
-const maxTries = 10; //maximum number of tries
+const maxTries = 15; //maximum number of tries
 var currentWord; //word chosen at random
 var guessedLetters; //stores the letters that the user has guessed
 var wordArr = [];
@@ -75,7 +75,7 @@ function makeGuess(letter) {
             remainingGuesses--;
             evaluateGuess(letter);
             console.log(remainingGuesses);
-        }
+        } 
     }
     updateDisplay();
     checkWin();

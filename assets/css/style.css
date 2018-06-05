@@ -1,6 +1,10 @@
 body, html {
     height: 100%;
 }
+.logo {
+    height: 400px;
+    width: 500px;
+}
 
 h1 {
     font-family: fantasy;
