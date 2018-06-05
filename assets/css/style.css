@@ -2,16 +2,9 @@ body, html {
     height: 100%;
 }
 
-.parallax { 
-    /* The image used */
-    background-image: url("../images/michaeljackson_background.png");
-
-    /* Full height */
-    height: 100%; 
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+h1 {
+    font-family: fantasy;
+}
+.h2 {
+    color: maroon;
 }

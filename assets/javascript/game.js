@@ -1,92 +1,140 @@
-var words = ["thriller", "bad", "dangerous", "immortal", "history", "abc"];
-var wrongLetters = [];
-var correctLetters = [];
-var repeatLetters = [];
-var userGuess;
+// Create Variables
+var words = [{
+        winWord: "thriller",
+        winImg: "assets/images/Thriller.png"
+    },
+    {
+        winWord: "bad",
+        winImg: "assets/images/Bad.jpg"
+    },
+
+    {
+        "winWord": "dangerous",
+        "winImg": "assets/images/Dangerous.jpg"
+    },
+    {
+        "winWord": "immortal",
+        "winImg": "assets/images/Immortal.jpg"
+    },
+    {
+        "winWord": "history",
+        "winImg": "assets/images/history.jpg"
+    },
+    {
+        "winWord": "abc",
+        "winImg": "assets/images/ABC.png"
+    },
+];
+
+const maxTries = 10; //maximum number of tries
+var currentWord; //word chosen at random
+var guessedLetters; //stores the letters that the user has guessed
 var wordArr = [];
-var blanksArr = [];
-
-// choose a word
-var currentWord = words[Math.floor(Math.random() * words.length)];
-
-wordArr = currentWord.split("");
-
-for (var i = 0; i < currentWord.length; i++) {
-    blanksArr.push("_");
-    console.log(blanksArr);
-}
-console.log(currentWord);
-console.log(wordArr);
-
-//This function is run whenever the user presses a key.
-document.onkeyup = function (event) {
-    var guessLetter = String.fromCharCode(event.keyCode).toLowerCase();
-    console.log("you pressed " + guessLetter);
-
-    //add wins, losses, reset, guesses left
+var guessingWord; //stores the letters that have been properly guessed
+var win = 0;
+var loss = 0;
+var gameStarted = false;
+var hasFinished = false;
+var remainingGuesses = 0;
 
 
-    //substituting the letters for the blanks upon correct guess
-    for (var i = 0; i < wordArr.length; i++) {
-        if (guessLetter === wordArr[i]) {
-            blankArr[i] = guessLetter;
-            document.querySelector("#correctguesses").innerhtml = blankArr;
-        }
+//Game setup
+
+//functions
+function resetGame() {
+    remainingGuesses = maxTries;
+    gameStarted = false;
+
+    //remove image
+    document.getElementById("winImg").src = "assets/images/michaeljackson_background.png";
+    //choose random word
+    currentWord = words[Math.floor(Math.random() * words.length)];
+
+    console.log(currentWord.winWord);
+
+    //define empty arrays
+    guessedLetters = [];
+    guessingWord = [];
+
+    //Create blanks for each letter in the random word
+    for (var i = 0; i < currentWord.winWord.length; i++) {
+        guessingWord.push("_");
     }
+    console.log(guessingWord);
+
+    //Show display
+    updateDisplay();
 };
 
+//function that checks the guessed letter against the current word
 
+function makeGuess(letter) {
+    if (remainingGuesses > 0) {
+        if (guessedLetters.indexOf(letter) === -1) {
+            guessedLetters.push(letter);
+            remainingGuesses--;
+            evaluateGuess(letter);
+            console.log(remainingGuesses);
+        }
+    }
+    updateDisplay();
+    checkWin();
+};
+//This function finds the letter and replaces them in the guess word.
+function evaluateGuess(letter) {
 
+    //Loop through word finding all instances of guessed letter
 
+    for (var i = 0; i < currentWord.winWord.length; i++) {
+        if (currentWord.winWord[i] === letter) {
+            guessingWord[i] = letter;
 
-//substitute letter for the blanks
+        }
+    }
 
+};
 
+//Updates the display on the HTML Page
+function updateDisplay() {
 
+    document.getElementById("current-word").innerText = "";
+    for (var i = 0; i < currentWord.winWord.length; i++) {
+        document.getElementById("current-word").innerText += guessingWord[i];
+    }
+    document.getElementById("remainingGuesses").innerText = remainingGuesses;
+    document.getElementById("guessedLetters").innerText = guessedLetters;
+};
 
-// write html
-// document.querySelector("#guessLetter").innerHTML = html;
-// document.getElementById("#currentGuess").innerHTML = blanksArr.join(" ");
-// blanksArr for Key Press
-// userGuess = "e";
-// for (var i = 0; i < currentWord)
-// };
+function checkWin() {
+    if (guessingWord.indexOf("_") === -1) {
+        console.log(guessingWord);
+        console.log(currentWord.winWord);
 
+        //compare the guessingWord with words.winWords array in an if statement then display the image of the word
 
-// answer blanks
-// var answerArray = [];
-// for (var i = 0; i < currentWord.length; i++) {
-//     answerArray[i] = "_";
-// }
-// console.log(answerArray);
+        alert("You Win!");
+        win++;
+        document.getElementById("wins").innerText = win;
+        hasFinished = true;
+        //change image to win image
 
-// document.getElementById("answerArray").innerHTML = answerArray.values;
+        // document.getElementById("winImg").src = words[winWord].winImg;
+        console.log("total wins =", +win);
+    } else if (remainingGuesses === 0) {
+        alert("You lose!");
+        loss++
+        document.getElementById("loss").innerText = loss;
+    }
+};
+// function with key press
+document.onkeyup = function (event) {
+    //only accept letter keys and change case
+    var letter = String.fromCharCode(event.keyCode).toLowerCase();
 
-// var remainingLetters = songs.length;
-// //letters left to be guessed
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+        makeGuess(letter);
 
+        console.log("you pressed " + letter);
 
-// // while (remainingLetters > 0) {
-// //     // Game code goes here
-// //     // Show the player their progress
-// //     answerArray.join("");
-// //     // Get a guess from a player
-// //     var guess = document.getElementById("user-text");
-
-// //     document.onkeyup = function (event) {
-// //         guess.textContent = event.key;
-// //     };
-
-// //     for (var j = 0; j < currentWord.length; j++) {
-// //         if (currentWord[j] === guess) {
-// //             answerArray[j] = guess;
-// //             remainingLetters--;
-// //         }
-
-// //     }
-
-
-// console.log(currentWord);
-// console.log(answerArray);
-// console.log(remainingLetters);
-// console.log(progress);
+    }
+};
