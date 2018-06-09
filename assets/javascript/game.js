@@ -109,7 +109,7 @@ function checkWin() {
     if (guessingWord.indexOf("_") === -1) {
         console.log(guessingWord);
         console.log(currentWord.winWord);
-
+        console.log(currentWord.winImg);
         //compare the guessingWord with words.winWords array in an if statement then display the image of the word
 
         alert("You Win!");
@@ -118,7 +118,7 @@ function checkWin() {
         hasFinished = true;
         //change image to win image
 
-        // document.getElementById("winImg").src = words[winWord].winImg;
+        document.getElementById("winImg").src = currentWord.winImg;
         console.log("total wins =", +win);
     } else if (remainingGuesses === 0) {
         alert("You lose!");
